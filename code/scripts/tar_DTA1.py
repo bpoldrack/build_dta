@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # coding: utf8
 import os
-
-inputPath = "/data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE/"
-outputPath = "/home/homeGlobal/tkadelka/test_dta/source_data/"
+import sys
 
 def is_dcm( folderpath ):
 	for folder in os.listdir( folderpath ):
@@ -17,6 +15,8 @@ def is_dcm( folderpath ):
 
 # the main function generates mkdir and find commands for creating tar balls per subjects in the outputPath.
 def main():
+	inputPath = "/data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE/"
+	outputPath = sys.argv[1] + "/source_data/" #"/home/homeGlobal/tkadelka/test_dta/source_data/"
 	for subject in os.listdir(inputPath):
 		if not "T1" == subject[:2]:
 			continue

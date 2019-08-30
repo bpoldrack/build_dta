@@ -5,6 +5,9 @@ cd DTA
 datalad create --force
 datalad run-procedure cfg_hirni
 
+# installing the necessary code into the dataset
+datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dta
+
 # get the source_data
-# hier bin ich im falschen (neuen) Directory, deshalb kann der auf die Pfade nicht zugreifen.
-python code/scripts/tar_DTA1.py > ../tmp/tar_DTA1.sh
+mkdir -p code/tmp/
+python code/build_dta/code/scripts/tar_DTA1.py $(pwd) > code/tmp/tar_DTA1.sh
