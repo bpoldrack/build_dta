@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf8
 import os
-
+import sys
 
 def is_dcm( folderpath ):
 	if not os.path.exists(folderpath):
