@@ -104,9 +104,6 @@ def _guess_task(dcm_dict, record):
                   record_time = record.get("SeriesTime", None)
                   #if not (elem_time and record_time):
                   #    continue
-                  print ("elem: " + str(elem))
-                  print ("reco: " + str(record_time))
-                  print (str(elem_time) < str(record_time))
                   if str(elem_time) < str(record_time):
                       count_if_same_protocol_but_scanned_earlier = count_if_same_protocol_but_scanned_earlier + 1
             if exp_flag == True:
@@ -137,6 +134,8 @@ def _guess_run(dcm_dict, record):
         # the bold-tasks don't have runs.
         if "DTA_ep2d_bold_Task".lower() in protocol.lower():
               return None
+        if "DTA_fieldmap_B0_gre_t2star".lower() in protocol.lower():
+              return "run-1"
         run = 1
         if protocol:
             for elem in dcm_dict._dicom_series:
@@ -209,7 +208,7 @@ class dta_DICOM2SpecRules(object):
                 'bids-modality': apply_bids_label_restrictions(_guess_modality(series_dict, self) ),
                 'bids-task': apply_bids_label_restrictions(_guess_task(self, series_dict) ),
                 'id': series_dict.get('SeriesNumber', 'unknown'),
-		'bids-run' : apply_bids_label_restrictions( run ) if apply_bids_label_restrictions(_guess_modality(series_dict, self)) not in ["magnitude1", "magnitude2", "phase1", "phase2"] else None
+		'bids-run' : apply_bids_label_restrictions( run )
               #  'bids-run' : apply_bids_label_restrictions(_guess_run(self, series_dict)) if "ProtocolName" in series_dict else None
                 }
 
