@@ -135,7 +135,7 @@ def _guess_run(dcm_dict, record):
         if "DTA_ep2d_bold_Task".lower() in protocol.lower():
               return None
         if "DTA_fieldmap_B0_gre_t2star".lower() in protocol.lower():
-              return "run-1"
+              return "1" # here sollte nur ne Nummer sein, nicht das "run-"?
         run = 1
         if protocol:
             for elem in dcm_dict._dicom_series:
