@@ -30,9 +30,14 @@ git config -f .datalad/config datalad.hirni.dicom2spec.rules code/build_dta/code
 #chmod 775 code/build_dta/code/scripts/run_dicom2spec.sh
 #./code/build_dta/code/scripts/run_dicom2spec.sh
 
+
+# configuring the .datalad/config, so it knows where to find the procedure for renaming the fieldmaps
+git config -f .datalad/config datalad.procedures.fix-fieldmaps-names.call-format bash {script} {ds} {{bids-subject}}
+git config -f .datalad/config datalad.locations.dataset-procedures code/build_dta/code/procedures
+
 # procedures for correcting names
 for d in ./T* ; do
-	code/build_dta/code/scripts/rename_fieldmaps_files.py $d/studyspec.json
+	code/build_dta/code/scripts/rename_fieldmaps.py $d/studyspec.json
 done
 
 # hirni-spec2bids
