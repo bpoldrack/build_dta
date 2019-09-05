@@ -34,28 +34,7 @@ def _guess_modality(record, dcm_dict):
 ########## Hier fuer DTA extra die Abfrage machen, ob Magnitude or phasediff
         image_type = record.get("ImageType", None)
         if image_type and "fieldmap" in protocol.lower():
-               value = ""
-               if image_type[2] == "M":
-                     for elem in dcm_dict._dicom_series:
-                         if "M" in elem.get("ImageType", None):
-                            elem_time = elem.get("AcquisitionTime", None)
-                            record_time = record.get("AcquisitionTime", None)
-                            if str(elem_time) <= str(record_time):
-                               value = "1"
-                            else:
-                               value = "2"
-                     return "magnitude" + value
-               elif image_type[2] == "P":
-                    for elem in dcm_dict._dicom_series:
-                         if "M" in elem.get("ImageType", None):
-                            elem_time = elem.get("AcquisitionTime", None)
-                            record_time = record.get("AcquisitionTime", None)
-                            if str(elem_time) < str(record_time):
-                               value = "1"
-                            else:
-                               value = "2"
-                    return "phase" + value
-
+                return "fieldmap"
         # I deleted "t2star" from that list for this specific dataset, because it does not contain these.
         # It would probably also be fine, if I had moved the "fieldmap" value to the start
         direct_search_terms = ["t1", "t1w", "t2", "t2w",
@@ -99,15 +78,7 @@ def _guess_task(dcm_dict, record):
         if protocol.lower() in "DTA_ep2d_bold_Task".lower():
             for elem in dcm_dict._dicom_series:
                if "DTA_ep2d_bold_Task".lower() in elem.get("ProtocolName").lower():
-                  exp_flag = True
-                  elem_time = elem.get("SeriesTime", None)
-                  record_time = record.get("SeriesTime", None)
-                  #if not (elem_time and record_time):
-                  #    continue
-                  if str(elem_time) < str(record_time):
-                      count_if_same_protocol_but_scanned_earlier = count_if_same_protocol_but_scanned_earlier + 1
-            if exp_flag == True:
-                  return ( "exp" + str(count_if_same_protocol_but_scanned_earlier))
+                  return ( "exp" + get_column( record.get("PatientID") ) )
         import re
         prot_parts = re.split('_|-|\s', protocol.lower())
         try:
@@ -129,14 +100,16 @@ def _guess_task(dcm_dict, record):
 
 
 def _guess_run(dcm_dict, record):
+        run = 1
         # vielleicht andere Variablen-Namen?
         protocol = record.get("ProtocolName")
         # the bold-tasks don't have runs.
         if "DTA_ep2d_bold_Task".lower() in protocol.lower():
-              return None
+              return "1"
+        if "DTA_epi_pmu_rest".lower() in protocol.lower():
+              return "1"
         if "DTA_fieldmap_B0_gre_t2star".lower() in protocol.lower():
               return "1" # here sollte nur ne Nummer sein, nicht das "run-"?
-        run = 1
         if protocol:
             for elem in dcm_dict._dicom_series:
                 if protocol in str(elem): ## change this..
@@ -146,6 +119,18 @@ def _guess_run(dcm_dict, record):
             return str(run)
         # default to None will lead to counting series with same protocol#
         return None
+
+
+def get_column( t_value ):
+     table_path = "/data/BnB1/DATA/source_data/DTA/code/dtage.tsv"
+     with open( table_path, 'r' ) as table:
+        for line in table:
+           for part in line.split("\t"):
+              if t_value in part:
+                 return str(line.split("\t").index(part))
+     return None
+
+
 
 class dta_DICOM2SpecRules(object):
 

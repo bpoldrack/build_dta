@@ -1,5 +1,4 @@
 # create a dataset
-# TODO: create -c hirni?
 datalad create -c hirni DTA
 cd DTA
 
@@ -25,12 +24,11 @@ git config -f .datalad/config datalad.hirni.dicom2spec.rules code/build_dta/code
 # hirni-import-dcm
 #chmod 775 ./code/build_dta/code/scripts/hirni-import-dcm.sh
 #./code/build_dta/code/scripts/hirni-import-dcm.sh
-./code/build_dta/code/scripts/hirni-import-dcm_reduced.sh
+./code/build_dta/code/scripts/hirni-import-dcm.sh
 
 # hirni-dicom2spec # hirni-import macht das eh, im Buildscript weg, code daneben in einen Ordner legen
 #chmod 775 code/build_dta/code/scripts/run_dicom2spec.sh
 #./code/build_dta/code/scripts/run_dicom2spec.sh
-
 
 # configuring the .datalad/config, so it knows where to find the procedure for renaming the fieldmaps
 git config -f .datalad/config datalad.procedures.fix-fieldmaps-names.call-format bash {script} {ds} {{bids-subject}}
