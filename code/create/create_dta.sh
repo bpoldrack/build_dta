@@ -28,16 +28,16 @@ git config -f .datalad/config datalad.hirni.dicom2spec.rules code/build_dta/code
 
 # hirni-dicom2spec # hirni-import macht das eh, im Buildscript weg, code daneben in einen Ordner legen
 #chmod 775 code/build_dta/code/scripts/run_dicom2spec.sh
-./code/build_dta/code/scripts/run_dicom2spec.sh
-
-# hirni-spec2bids
-#chmod 775 code/build_dta/code/scripts/run_spec2bids.sh
-#./code/build_dta/code/scripts/run_spec2bids.sh
+#./code/build_dta/code/scripts/run_dicom2spec.sh
 
 # procedures for correcting names
 for d in ./T* ; do
 	code/build_dta/code/scripts/rename_fieldmaps_files.py $d/studyspec.json
 done
+
+# hirni-spec2bids
+#chmod 775 code/build_dta/code/scripts/run_spec2bids.sh
+./code/build_dta/code/scripts/run_spec2bids.sh
 
 # drei Befhele aus der Demo hier hin zum pürüfen
 
