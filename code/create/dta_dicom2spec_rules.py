@@ -35,6 +35,7 @@ def _guess_modality(record, dcm_dict):
         image_type = record.get("ImageType", None)
         if image_type and "fieldmap" in protocol.lower():
                 return "fieldmap"
+
         # I deleted "t2star" from that list for this specific dataset, because it does not contain these.
         # It would probably also be fine, if I had moved the "fieldmap" value to the start
         direct_search_terms = ["t1", "t1w", "t2", "t2w",
@@ -108,8 +109,9 @@ def _guess_run(dcm_dict, record):
               return "1"
         if "DTA_epi_pmu_rest".lower() in protocol.lower():
               return "1"
-        if "DTA_fieldmap_B0_gre_t2star".lower() in protocol.lower():
-              return "1" # here sollte nur ne Nummer sein, nicht das "run-"?
+
+#        if "DTA_fieldmap_B0_gre_t2star".lower() in protocol.lower():
+#              return "1" # here sollte nur ne Nummer sein, nicht das "run-"?
         if protocol:
             for elem in dcm_dict._dicom_series:
                 if protocol in str(elem): ## change this..

@@ -2,41 +2,14 @@
 dataset=${1}
 subject=${2}
 
-cd ${dataset}
+cd /data/BnB_USER/Kadelka/DTA/
 
-# I know, this code looks shitty and one loop would be enough,
-# but robert wants his data and I need to clean this anyways.
-for file in sub-${subject}/*/fmap/*magnitude12*.nii.gz; do
-	echo $file "${file/magnitude12/magnitude2}"
-done
-
-for file in sub-${subject}/*/fmap/*magnitude11*.nii.gz; do
-        echo $file "${file/magnitude11/magnitude1}"
-done
-
-for file in sub-${subject}/*/fmap/*phase12*.nii.gz; do
-        echo $file "${file/phase12/phase2}"
-done
-
-for file in sub-${subject}/*/fmap/*phase11*.nii.gz; do
-        echo $file "${file/phase11/phase1}"
-done
-
-
-
-
-for file in sub-${subject}/*/fmap/*magnitude21*.nii.gz; do
-        echo $file "${file/magnitude21/magnitude2}"
-done
-
-for file in sub-${subject}/*/fmap/*magnitude11*.nii.gz; do
-        echo $file "${file/magnitude11/magnitude1}"
-done
-
-for file in sub-${subject}/*/fmap/*phase12*.nii.gz; do
-        echo $file "${file/phase12/phase2}"
-done
-
-for file in sub-${subject}/*/fmap/*phase11*.nii.gz; do
-        echo $file "${file/phase11/phase1}"
+for file in sub-DTA*/*/fmap/*fieldmap*.json ; do
+	if [ ! -z $(cat ${file} | jq .ImageType  | grep -v "ND" | grep -v "ORIGINAL"| grep -v "PRIMARY" | grep "P" ) ]; then
+		echo $file is Phase
+		mv $file "${file/fieldmap/phase}"
+	else
+		echo $file is Magnitude
+                mv $file "${file/fieldmap/magnitude}"
+	fi
 done
