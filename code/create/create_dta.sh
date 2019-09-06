@@ -39,9 +39,11 @@ for d in ./T* ; do
 	code/build_dta/code/scripts/rename_fieldmaps.py $d/studyspec.json
 done
 
+######### don't spec2bids here, but use this as the source for another dataset. (siehe demo von ben)
+
 # hirni-spec2bids
 #chmod 775 code/build_dta/code/scripts/run_spec2bids.sh
-./code/build_dta/code/scripts/run_spec2bids.sh
+#./code/build_dta/code/scripts/run_spec2bids.sh
 
 # drei demo-befehle testen
 
