@@ -9,12 +9,17 @@ for old_json in sub-DTA*/*/fmap/*fieldmap*.json ; do
 		new_json  = "${old_json/fieldmap/phase}"
 		old_nifti = "${old_json/.json/.nii.gz}"
 		new_nifti = "${old_nifti/fieldmap/phase}"
+		echo $old_json
+		echo $new_json
 		mv $old_json  $new_json
 		mv $old_nifti $new_nifti
 	else
 		new_json  = "${old_json/fieldmap/magnitude}"
                 old_nifti = "${old_json/.json/.nii.gz}"
                 new_nifti = "${old_nifti/fieldmap/magnitude}"
+                echo $old_json
+                echo $new_json
+
                 mv $old_json  $new_json
                 mv $old_nifti $new_nifti
 	fi
