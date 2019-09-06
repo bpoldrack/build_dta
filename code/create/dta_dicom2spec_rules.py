@@ -20,6 +20,11 @@ def _guess_modality(record, dcm_dict):
             # TODO: What actually is the relevant part of protocol here?
             return "dwi"
 
+        if "60dir".lower() in protocol.lower():
+            return "dwi"
+        if "120dir".lower() in protocol.lower():
+            return "dwi"
+
         if "field map" in protocol:
             return "fieldmap"
         # END
@@ -35,6 +40,7 @@ def _guess_modality(record, dcm_dict):
         image_type = record.get("ImageType", None)
         if image_type and "fieldmap" in protocol.lower():
                 return "fieldmap"
+
 
         # I deleted "t2star" from that list for this specific dataset, because it does not contain these.
         # It would probably also be fine, if I had moved the "fieldmap" value to the start
@@ -80,6 +86,13 @@ def _guess_task(dcm_dict, record):
             for elem in dcm_dict._dicom_series:
                if "DTA_ep2d_bold_Task".lower() in elem.get("ProtocolName").lower():
                   return ( "exp" + get_column( record.get("PatientID") ) )
+
+        if "60dir".lower() in protocol.lower():
+            return "60dir"
+        if "120dir".lower() in protocol.lower():
+            return "120dir"
+
+
         import re
         prot_parts = re.split('_|-|\s', protocol.lower())
         try:
