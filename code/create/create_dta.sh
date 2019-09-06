@@ -28,7 +28,7 @@ git config --file .datalad/config --add datalad.locations.dataset-procedures cod
 # hirni-import-dcm
 #chmod 775 ./code/build_dta/code/scripts/hirni-import-dcm.sh
 #./code/build_dta/code/scripts/hirni-import-dcm.sh
-./code/build_dta/code/scripts/hirni-import-dcm_reduced.sh
+./code/build_dta/code/scripts/hirni-import-dcm.sh
 
 # hirni-dicom2spec # hirni-import macht das eh, im Buildscript weg, code daneben in einen Ordner legen
 #chmod 775 code/build_dta/code/scripts/run_dicom2spec.sh
