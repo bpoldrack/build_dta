@@ -123,6 +123,12 @@ def _guess_run(dcm_dict, record):
         if "DTA_epi_pmu_rest".lower() in protocol.lower():
               return "1"
 
+        if "60dir".lower() in protocol.lower():
+            return "60dir"
+        if "120dir".lower() in protocol.lower():
+            return "120dir"
+
+
 #        if "DTA_fieldmap_B0_gre_t2star".lower() in protocol.lower():
 #              return "1" # here sollte nur ne Nummer sein, nicht das "run-"?
         if protocol:
