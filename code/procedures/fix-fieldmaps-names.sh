@@ -4,12 +4,18 @@ subject=${2}
 
 cd /data/BnB_USER/Kadelka/DTA/
 
-for file in sub-DTA*/*/fmap/*fieldmap*.json ; do
-	if [ ! -z $(cat ${file} | jq .ImageType  | grep -v "ND" | grep -v "ORIGINAL"| grep -v "PRIMARY" | grep "P" ) ]; then
-		echo $file is Phase
-		mv $file "${file/fieldmap/phase}"
+for old_json in sub-DTA*/*/fmap/*fieldmap*.json ; do
+	if [ ! -z $(cat ${old_json} | jq .ImageType  | grep -v "ND" | grep -v "ORIGINAL"| grep -v "PRIMARY" | grep "P" ) ]; then
+		new_json  = "${old_json/fieldmap/phase}"
+		old_nifti = "${old_json/.json/.nii.gz}"
+		new_nifti = "${old_nifti/fieldmap/phase}"
+		mv $old_json  $new_json
+		mv $old_nifti $new_nifti
 	else
-		echo $file is Magnitude
-                mv $file "${file/fieldmap/magnitude}"
+		new_json  = "${old_json/fieldmap/magnitude}"
+                old_nifti = "${old_json/.json/.nii.gz}"
+                new_nifti = "${old_nifti/fieldmap/magnitude}"
+                mv $old_json  $new_json
+                mv $old_nifti $new_nifti
 	fi
 done
