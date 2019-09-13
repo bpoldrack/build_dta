@@ -1,6 +1,7 @@
+# This script has to remove all the run-1 and run-2 parts
+# in all the filenames of DTA.
+
 #!/usr/bin/env bash
-dataset=${1}
-subject=${2}
 
 for old_file in sub-DTA*/*/*/*run* ; do
 
