@@ -3,8 +3,13 @@
 import os
 import sys
 
-# this function looks into a folder-path and searches for dicoms.
+
+# checks in a folderpath, if there are dicoms in it.
 def is_dcm( folderpath ):
+	if not os.path.exists(folderpath):
+		folderpath = folderpath.replace("/1/", "/2/")
+	if not os.path.exists(folderpath):
+		folderpath = folderpath.replace("/2/", "/3/")
 	for folder in os.listdir( folderpath ):
 		if ".DS_Store" in folder or ".json" in folder or ".nii" in folder:
 			continue
@@ -16,16 +21,13 @@ def is_dcm( folderpath ):
 
 # the main function generates mkdir and find commands for creating tars per subjects in the outputPath.
 def main():
-	inputPath = "/data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE/"
-	outputPath = sys.argv[1] + "/sourcedata/" #"/home/homeGlobal/tkadelka/test_dta/source_data/"
+	inputPath = "/data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE2/"
+	outputPath = "/data/BnB_TEMP/Kadelka/sourcedata_DTA/"
+
 	for subject in os.listdir(inputPath):
-		# just folders with T-values
 		if not "T1" == subject[:2]:
 			continue
-		# just folders with dicoms
-		elif is_dcm(inputPath + subject + "/scans/2/"):
-			# print the command-lines
+		elif is_dcm(inputPath + subject + "/scans/1/"):
 			print ("mkdir -p " + outputPath + subject + "/")
 			print ("find " + inputPath + subject + "/scans/ -name \"*.dcm\" | tar -cvf " + outputPath + subject + "/" + subject + ".tar -T -")
-
 main()
