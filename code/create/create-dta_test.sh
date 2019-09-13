@@ -6,7 +6,7 @@ cd DTA_test
 datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dta
 
 # modify the rules for the spec, so the dta-rules will be used
-git config --file .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dta/code/create/dta_dicom2spec_rules.py
+git config -f .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dta/code/create/dta_dicom2spec_rules.py
 
 # configuring the .datalad/config, so it knows where to find the procedure for renaming the fieldmaps
 git config -f .datalad/config --add datalad.locations.dataset-procedures code/build_dta/code/procedures
