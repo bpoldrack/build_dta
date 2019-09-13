@@ -15,7 +15,7 @@ def add_name_fixing(path):
         if snippet['type'] == 'dicomseries:all':
             snippet['procedures'].append(
                 {
-                    'procedure-name': {'value': 'fix-fieldmaps-names',
+                    'procedure-name': {'value': 'fieldmaps-to-phase-or-magnitude_fix_all',
                                        'approved': True},
                     'on-anonymize': {'value': False,
                                      'approved': True},

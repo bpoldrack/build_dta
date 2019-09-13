@@ -3,6 +3,8 @@
 import os
 import sys
 
+
+# checks in a folderpath, if there are dicoms in it.
 def is_dcm( folderpath ):
 	if not os.path.exists(folderpath):
 		folderpath = folderpath.replace("/1/", "/2/")
@@ -17,7 +19,7 @@ def is_dcm( folderpath ):
 	return False
 
 
-# the main function generates mkdir and find commands for creating tar balls per subjects in the outputPath.
+# the main function generates mkdir and find commands for creating tars per subjects in the outputPath.
 def main():
 	inputPath = "/data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE2/"
 	outputPath = sys.argv[1] + "/source_data/" #"/home/homeGlobal/tkadelka/test_dta/source_data/"

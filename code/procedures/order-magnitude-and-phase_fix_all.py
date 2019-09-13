@@ -1,18 +1,24 @@
-##!/usr/bin/env python
+#!/usr/bin/env python
 # coding: utf8
 import os
 import json
 
 
+# In this script, I correct the order of
+# phase1/phase2-files (also for magnitude)
+# based on the AcquisitionTime from the
+# json-files.
 def main():
-
-	# because of the messed up color-highlighting when using an empty string in the editor.
+	# because of the messed up color-highlighting when using an empty string in the editor, I have this:
 	no_value = ""
+
+	# while swapping file names, I need a temp-file-name.
 	temp = "temp_fileName.json"
 	inputPath = os.getcwd()
 	inputPath = "/data/BnB1/Datalad/BIDS_DTA/"
-	list_of_fmaps = []
 
+	# we collect the fmap-folder in a list. TODO: This is shitty and could be faster.
+	list_of_fmaps = []
 	for root, dirs, files in os.walk( inputPath ):
 		dirs[:] = [ os.path.join(root, dir)  for dir in dirs[:] ]
 		for dir in dirs:
@@ -21,8 +27,9 @@ def main():
 			elif dir not in list_of_fmaps:
 				list_of_fmaps.append( dir + "/" )
 
-#	func( list_of_fmaps )
-
+	# check the fmap-folders, read AcquisitionTime from json-files
+	# and swap the order of phase1/phase2 + magnitude1/magnitude2
+	# if that is necessary
 	for dir in sorted( list_of_fmaps ) :
 			magnitude1_time = no_value; magnitude2_time = no_value; phase1_time = no_value; phase2_time = no_value ;
 			this_phase = True ; this_magnitude = True
@@ -33,7 +40,6 @@ def main():
 				if "magnitude2" in file and ".json" in file:
 					magnitude2_time = json.load( open( dir + file ) )["AcquisitionTime"]
 					magnitude2_json = dir + file
-				# or elif
 				if "phase1" in file and ".json" in file:
 					phase1_time = json.load( open( dir + file ) )["AcquisitionTime"]
 					phase1_json = dir + file
@@ -41,44 +47,38 @@ def main():
 					phase2_time = json.load( open( dir + file ) )["AcquisitionTime"]
 					phase2_json = dir + file
 
+				# when we have the AcquisitionTime for all fmap-files in the folder, we can check if they are switched (relative to phase1/phase2)
 				if magnitude1_time != no_value and magnitude2_time != no_value and phase1_time != no_value and phase2_time != no_value:
-					if ( magnitude1_time > magnitude2_time and this_magnitude):
+					# if the AcquisitionTime is switched and we didn't changed the filenames:
+					if ( magnitude1_time > magnitude2_time and this_magnitude ):
+
+						# for swapping the names of jsons for magnitudes
 						print("mv " + magnitude1_json + " " + dir + temp)
 						print("mv " + magnitude2_json + " " + magnitude1_json)
 						print("mv " + dir + temp + " " + magnitude2_json)
 
+						# for swapping the names of niftis for magnitudes
 						print("mv " + magnitude1_json.replace(".json", ".nii.gz") + " " + dir + temp.replace(".json", ".nii.gz"))
 						print("mv " + magnitude2_json.replace(".json", ".nii.gz") + " " + magnitude1_json.replace(".json", ".nii.gz"))
 						print("mv " + dir + temp.replace(".json", ".nii.gz") + " " + magnitude2_json.replace(".json", ".nii.gz"))
 
+						# otherwise it switches the names an even number of times (...)
 						this_magnitude = False
 
-						#os.rename(magnitude1_json, dir + temp)
-						#os.rename(magnitude2_json, magnitude1_json)
-						#os.rename(dir + temp, magnitude2_json)
+					if ( phase1_time > phase2_time and this_phase ):
 
-						#os.rename(magnitude1_json.replace(".json", ".nii.gz"), dir + temp.replace(".json", ".nii.gz"))
-						#os.rename(magnitude2_json.replace(".json", ".nii.gz"), magnitude1_json.replace(".json", ".nii.gz"))
-						#os.rename(dir + temp.replace(".json", ".nii.gz"), magnitude2_json.replace(".json", ".nii.gz"))
-
-					if ( phase1_time >     phase2_time and this_phase):
+						# for swapping the names of jsons for phases
 						print("mv " + phase1_json + " " + dir + temp)
 						print("mv " + phase2_json + " " + phase1_json)
 						print("mv " + dir + temp + " " + phase2_json)
 
+						# for swapping the names of niftis for phases
 						print("mv " + phase1_json.replace(".json", ".nii.gz") + " " + dir + temp.replace(".json", ".nii.gz"))
 						print("mv " + phase2_json.replace(".json", ".nii.gz") + " " + phase1_json.replace(".json", ".nii.gz"))
 						print("mv " + dir + temp.replace(".json", ".nii.gz") + " " + phase2_json.replace(".json", ".nii.gz"))
 
+						# we switch just 1 time per folder.
 						this_phase = False
-
-						#os.rename(phase1_json, dir + temp)
-						#os.rename(phase2_json, phase1_json)
-						#os.rename(dir + temp, phase2_json)
-
-						#os.rename(phase1_json.replace(".json", ".nii.gz"), dir + temp.replace(".json", ".nii.gz"))
-						#os.rename(phase2_json.replace(".json", ".nii.gz"), phase1_json.replace(".json", ".nii.gz"))
-						#os.rename(dir + temp.replace(".json", ".nii.gz"), phase2_json.replace(".json", ".nii.gz"))
 
 main()
 

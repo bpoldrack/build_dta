@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-dataset=${1}
-subject=${2}
 
+# this script changes the dwi-file-names
+# for example from run-120dir to acq-120dir.
 for old_file in sub-DTA*/*/dwi/*run* ; do
 
 		new_file="${old_file/run/acq}"
