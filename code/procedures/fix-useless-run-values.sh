@@ -6,6 +6,6 @@ for old_file in sub-DTA*/*/*/*run* ; do
 
 		tmp_file="${old_file/_run-1_/_}"
 		new_file="${tmp_file/_run-2_/_}"
-		#git mv $old_file $new_file
-		echo $old_file $new_file
+		git mv $old_file $new_file
+
 done
