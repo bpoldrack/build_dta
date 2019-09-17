@@ -1,6 +1,9 @@
+# First argument: Path to install the DTA_study data
+# Second argument: which sourcedata to use
+
 # create a dataset
-datalad create -c hirni DTA_test
-cd DTA_test
+datalad create -c hirni $1
+cd $1
 
 # installing the necessary code into the dataset
 datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dta
@@ -18,7 +21,7 @@ git config -f .datalad/config --add datalad.locations.dataset-procedures code/bu
 # ./code/tmp/tar-DTA2_output.sh
 
 # hirni-import-dcm (but with reduced number of input tars)
-./code/build_dta/code/routines/hirni-import-dcm_test.sh /data/BnB_TEMP/Kadelka/sourcedata_DTA_reduced/*
+./code/build_dta/code/routines/hirni-import-dcm_test.sh $2
 
 # TODO : everything from here
 
