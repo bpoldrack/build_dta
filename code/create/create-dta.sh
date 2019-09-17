@@ -1,5 +1,7 @@
 # First argument: Path to install the DTA_study data
 # Second argument: which sourcedata to use
+# Example-call for installing DTA_sourcedata_reduced:
+# >> ./create_BIDS_DTA.sh . /data/BnB_TEMP/Kadelka/DTA_sourcedata_reduced/
 
 # create a dataset
 datalad create -c hirni $1
@@ -12,7 +14,7 @@ datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dt
 git config -f .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dta/code/create/dta_dicom2spec_rules.py
 
 # configuring the .datalad/config, so it knows where to find the procedure for renaming the fieldmaps
-git config -f .datalad/config --add datalad.locations.dataset-procedures code/build_dta/code/procedures
+# git config -f .datalad/config --add datalad.locations.dataset-procedures code/build_dta/code/procedures
 
 # THIS IS NOT NECESSARY, WHEN FILES ARE ALREADY IN TARS ON CLUSTER
 # get the source_data for DTA1
@@ -21,6 +23,7 @@ git config -f .datalad/config --add datalad.locations.dataset-procedures code/bu
 # ./code/tmp/tar-DTA2_output.sh
 
 # hirni-import-dcm (but with reduced number of input tars)
+datalad install -d . -s $2 --recursive
 ./code/build_dta/code/routines/hirni-import-dcm_test.sh $2
 
 # TODO : everything from here
