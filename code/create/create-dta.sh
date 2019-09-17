@@ -24,7 +24,7 @@ git config -f .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dt
 
 # hirni-import-dcm (but with reduced number of input tars)
 datalad install -d . -s $2 --recursive
-./code/build_dta/code/routines/hirni-import-dcm_test.sh $2
+./code/build_dta/code/routines/hirni-import-dcm_test.sh sourcedata/DTA_data/
 
 # TODO : everything from here
 
