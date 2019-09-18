@@ -29,4 +29,5 @@ def main():
 			print ("mkdir -p " + outputPath + subject + "/")
 			print ("find " + inputPath + subject + "/scans/ -name \"*.dcm\" | tar -cvf " + outputPath + subject + "/" + subject + ".tar -T -")
 
+
 main()

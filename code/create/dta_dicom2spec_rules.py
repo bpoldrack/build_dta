@@ -112,7 +112,6 @@ def _guess_task(dcm_dict, record):
         return None
 
 
-
 def _guess_run(dcm_dict, record):
         run = 1
         # vielleicht andere Variablen-Namen?

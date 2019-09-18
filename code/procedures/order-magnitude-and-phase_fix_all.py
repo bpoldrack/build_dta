@@ -80,5 +80,5 @@ def main():
 						# we switch just 1 time per folder.
 						this_phase = False
 
-main()
 
+main()

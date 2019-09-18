@@ -10,3 +10,4 @@ for old_file in sub-DTA*/*/*/*run* ; do
 		git mv $old_file $new_file
 
 done
+

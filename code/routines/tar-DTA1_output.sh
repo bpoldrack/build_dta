@@ -232,3 +232,4 @@ mkdir -p /data/BnB_TEMP/Kadelka/sourcedata_DTA/T11055/
 find /data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE/T11055/scans/ -name "*.dcm" | tar -cvf /data/BnB_TEMP/Kadelka/sourcedata_DTA/T11055/T11055.tar -T -
 mkdir -p /data/BnB_TEMP/Kadelka/sourcedata_DTA/T11365/
 find /data/BnB_USER/Plaeschke/DTA_Studie/MRI_Data/MultiState_072015/DATA/DTAGE/T11365/scans/ -name "*.dcm" | tar -cvf /data/BnB_TEMP/Kadelka/sourcedata_DTA/T11365/T11365.tar -T -
+

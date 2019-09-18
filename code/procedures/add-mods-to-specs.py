@@ -23,6 +23,27 @@ def add_name_fixing(path):
                                      'approved': True},
                 }
             )
+# Ben: TODO: Nope. If you want to add two procedures, then it's two dictionaries to be appended:
+#             snippet['procedures'].append(
+#                 {
+#                     'procedure-name': {'value': 'change-dwi-run-to-acq_fix_all',
+#                                        'approved': True},
+#                     'on-anonymize': {'value': False,
+#                                      'approved': True},
+#                 }
+#             )
+#             snippet['procedures'].append(
+#                 {
+#                     'procedure-name': {'value': 'fieldmaps-to-phase-or-magnitude_fix_all',
+#                                        'approved': True},
+#                     'on-anonymize': {'value': False,
+#                                      'approved': True},
+#                 }
+#             )
+#
+# Alternatively, extend the list rather than appedning twice, like: snippet['procedures'].extend( [{...}, {...}] )
+#
+# You can't have a dictionary where the same key ("procedure-name") appears twice.
 
     json_py.dump2stream(spec, path)
 
@@ -35,4 +56,3 @@ if __name__ == '__main__':
         raise RuntimeError("spec file does not exist: %s" % spec_path)
 
     add_name_fixing(spec_path)
-
