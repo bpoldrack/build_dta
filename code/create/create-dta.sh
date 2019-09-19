@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # First argument: Path to install the DTA_study data
 # Second argument: which sourcedata to use
 # Example-call for installing DTA_sourcedata_reduced:
