@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # coding: utf8
+
+# In this script, I correct the order of phase1/phase2-files (also for magnitude)
+# based on the AcquisitionTime from the json-files.
+
 import os
 import json
 
 
-# In this script, I correct the order of
-# phase1/phase2-files (also for magnitude)
-# based on the AcquisitionTime from the
-# json-files.
 def main():
+
 	# because of the messed up color-highlighting when using an empty string in the editor, I have this:
 	no_value = ""
 
@@ -81,4 +82,3 @@ def main():
 						this_phase = False
 
 main()
-

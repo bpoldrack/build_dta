@@ -1,3 +1,5 @@
+ #!/usr/bin/env bash 
+
 # datalad hirni-import-dcm should run the hirni-dicom2spec anyways.
 # This script was for testing the steps after importing the dcm manually.
 for d in ./T* ; do

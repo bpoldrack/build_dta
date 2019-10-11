@@ -23,5 +23,5 @@ for d in ./T* ; do
 done
 datalad save
 
-# test the 3 lines from benjamins demo for really installing this as a dataset.
+# TODO: test the 3 lines from benjamins demo for really installing this as a dataset.
 

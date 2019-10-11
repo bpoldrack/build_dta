@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 def add_name_fixing(path):
     import datalad.support.json_py as json_py
 
@@ -17,10 +16,15 @@ def add_name_fixing(path):
                 {
                     'procedure-name': {'value': 'change-dwi-run-to-acq_fix_all',
                                        'approved': True},
+                    'on-anonymize': {'value': False,
+                                     'approved': True}
+                }
+            ).append(
+                {
                     'procedure-name': {'value': 'fieldmaps-to-phase-or-magnitude_fix_all',
                                        'approved': True},
                     'on-anonymize': {'value': False,
-                                     'approved': True},
+                                     'approved': True}
                 }
             )
 
