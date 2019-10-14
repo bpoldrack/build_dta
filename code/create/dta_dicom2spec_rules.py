@@ -178,6 +178,16 @@ class dta_DICOM2SpecRules(object):
          return None
 
 
+    # this function reads a table and searches the given t-value (these are the session values for dta)
+    # when it finds the session value, it retunrs the matching subject-ID from the table.
+    def read_subject_for_session_from_table( self, t_value ):
+        table_path = "/data/BnB1/DATA/source_data/DTA/code/dtage.tsv"
+        with open( table_path, 'r' ) as table:
+            for line in table:
+                if t_value in line:
+                   return line.replace("\n","\t").split("\t")[0]
+
+
     # TODO: maybe I sould use this function or build something equaly. Or delete it, if I am more sure about it.
     # anyways, ExamCard is not a protocol-name of DTA at all.
     def series_is_valid(self, series_dict):
