@@ -7,7 +7,9 @@ datalad create -c hirni $1
 cd $1
 
 # installing the necessary code into the dataset
-datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dta
+#datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dta
+# TODO: erase the next line, use the one before this.
+datalad install -d . -s git@github.com:bpoldrack/build_dta.git code/build_dta
 
 # modify the rules for the spec, so the dta-rules will be used
 git config -f .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dta/code/create/dta_dicom2spec_rules.py
