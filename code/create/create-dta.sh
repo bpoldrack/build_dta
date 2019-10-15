@@ -16,12 +16,13 @@ git config -f .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dt
 datalad save
 
 # hirni-import-dcm (but with reduced number of input tars)
-datalad install -d . -s git@github.com:TobiasKadelka/DTA_data.git DTA_data --recursive
+datalad install -d . -s git@github.com:TobiasKadelka/DTA_data.git sourcedata --recursive
+datalad save
 ./code/build_dta/code/routines/hirni-import-dcm.sh DTA_data
 
 # add procedures for correcting names to the studyspec.json
 for d in ./T* ; do
-	code/build_dta/code/procedures/add-mods-to-specs.py $d/studyspec.json
+	code/build_dta/code/routines/add-mods-to-specs.py $d/studyspec.json
 done
 datalad save
 
