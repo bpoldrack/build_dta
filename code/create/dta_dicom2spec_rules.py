@@ -41,6 +41,16 @@ def _guess_modality(record, dcm_dict):
     return None
 
 
+def get_column( t_value ):
+     table_path = "/data/BnB1/DATA/source_data/DTA/code/dtage.tsv"
+     with open( table_path, 'r' ) as table:
+        for line in table:
+           for part in line.split("\t"):
+              if t_value in part:
+                 return str(line.split("\t").index(part))
+     return None
+
+
 def _guess_task(dcm_dict, record):
 
     protocol = record.get("ProtocolName", None).lower()
