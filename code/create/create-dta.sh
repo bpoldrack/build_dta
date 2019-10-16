@@ -16,8 +16,12 @@ git config -f .datalad/config --add datalad.hirni.dicom2spec.rules code/build_dt
 datalad save -m "changed the hirni rules specification file"
 
 # hirni-import-dcm (but with reduced number of input tars)
-datalad install -d . -s git@github.com:TobiasKadelka/DTA_data.git sourcedata --recursive
-datalad save -m "installed the sourcedata that has to be converted into a bids-dataset"
+# maybe just one line, if install also saves. TODO
+datalad install -d . -s git@github.com:TobiasKadelka/DTA_data.git sourcedata --recursive --nosave
+datalad save sourcedata
+
+
+ -m "installed the sourcedata that has to be converted into a bids-dataset"
 ./code/build_dta/code/routines/hirni-import-dcm.sh sourcedata
 
 # add procedures for correcting names to the studyspec.json
