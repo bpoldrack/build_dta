@@ -3,8 +3,8 @@
 # First argument: Path to install the DTA_study data
 
 # create a dataset
-datalad create -c hirni $1
-cd $1
+datalad create -c hirni $1/DTA_study
+cd $1/DTA_study
 
 # installing the necessary code into the dataset
 #datalad install -d . -s git@github.com:TobiasKadelka/build_dta.git code/build_dta
