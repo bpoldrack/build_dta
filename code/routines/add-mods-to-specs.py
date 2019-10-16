@@ -19,7 +19,8 @@ def add_name_fixing(path):
                     'on-anonymize': {'value': False,
                                      'approved': True}
                 }
-            ).append(
+            )
+	    snippet['procedures'].append(
                 {
                     'procedure-name': {'value': 'fieldmaps-to-phase-or-magnitude_fix_all',
                                        'approved': True},
