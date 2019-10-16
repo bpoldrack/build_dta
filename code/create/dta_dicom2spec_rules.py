@@ -53,7 +53,7 @@ def _guess_task(dcm_dict, record):
     if protocol:
         if protocol == "dta_epi_pmu_rest":
                return "rest"
-        if protocol == "DTA_ep2d_bold_Task":
+        if protocol == "dta_ep2d_bold_task":
             return ( "exp" + get_column( record.get("PatientID") ) )
 
         if "60dir" in protocol:
