@@ -26,5 +26,4 @@ for d in ./T* ; do
 done
 datalad save -m "added modifications to studyspec.json files"
 
-# TODO: test the 3 lines from benjamins demo for really installing this as a dataset.
-
+datalad hirni-spec2bids */studyspec.json
