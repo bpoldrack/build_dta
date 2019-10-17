@@ -88,7 +88,8 @@ def _guess_task(dcm_dict, record):
 def _guess_run(dcm_dict, record):
 
         # maybe this function can be deleted, I think there are no runs at all in DTA.
-        return None
+#        return None
+	# now I don't think that anymore. Seemed to be important.
 
 	# start with 1.
         run = 1
