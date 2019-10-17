@@ -18,10 +18,8 @@ datalad save -m "changed the hirni rules specification file"
 # hirni-import-dcm (but with reduced number of input tars)
 # maybe just one line, if install also saves. TODO
 datalad install -d . -s git@github.com:TobiasKadelka/DTA_data.git sourcedata --recursive --nosave
-datalad save sourcedata
+datalad save sourcedata -m "installed the sourcedata that has to be converted into a bids-dataset"
 
-
- -m "installed the sourcedata that has to be converted into a bids-dataset"
 ./code/build_dta/code/routines/hirni-import-dcm.sh sourcedata
 
 # add procedures for correcting names to the studyspec.json
@@ -31,3 +29,11 @@ done
 datalad save -m "added modifications to studyspec.json files"
 
 datalad hirni-spec2bids */studyspec.json
+
+# for changing the term fieldmap to magnitude or phase in file-names
+code/build_dta/code/procedures/fieldmaps-to-phase-or-magnitude_fix_all.sh
+
+# for generating the ( TODO: git mv ) mv commands for ordering magnitude/phase 1/2
+python code/build_dta/code/routines/order-magnitude-and-phase_fix_all.py /data/BnB_USER/Kadelka/DTA_study/ > code/build_dta/code/routines/order-magnitude-and-phase.sh
+chmod 775 code/build_dta/code/routines/order-magnitude-and-phase.sh
+datalad save -r -m "fixing fieldmaps."

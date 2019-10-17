@@ -95,11 +95,11 @@ def _guess_run(dcm_dict, record):
         run = 1
         protocol = record.get("ProtocolName")
 
-        # the bold-tasks don't have runs.
-        if "DTA_ep2d_bold_Task".lower() in protocol.lower():
-              return "1"
-        if "DTA_epi_pmu_rest".lower() in protocol.lower():
-              return "1"
+#        # the bold-tasks don't have runs.
+#        if "DTA_ep2d_bold_Task".lower() in protocol.lower():
+#              return "1"
+#       if "DTA_epi_pmu_rest".lower() in protocol.lower():
+#            return "1"
 
 	# I return 60dir as a run, because it is easy
 	# to change that later to acq-60dir

@@ -6,7 +6,7 @@
 
 import os
 import json
-
+import sys
 
 def main():
 
@@ -15,9 +15,9 @@ def main():
 
 	# while swapping file names, I need a temp-file-name.
 	temp = "temp_fileName.json"
-	inputPath = os.getcwd()
-	inputPath = "/data/BnB1/Datalad/BIDS_DTA/"
-
+#	inputPath = os.getcwd()
+#	inputPath = "/data/BnB1/Datalad/BIDS_DTA/"
+	inputPath = sys.argv[1]
 	# we collect the fmap-folder in a list. TODO: This is shitty and could be faster.
 	list_of_fmaps = []
 	for root, dirs, files in os.walk( inputPath ):
@@ -34,6 +34,10 @@ def main():
 	for dir in sorted( list_of_fmaps ) :
 			magnitude1_time = no_value; magnitude2_time = no_value; phase1_time = no_value; phase2_time = no_value ;
 			this_phase = True ; this_magnitude = True
+			magnitude1_json = ""
+			magnitude2_json = ""
+			phase1_json     = ""
+			phase2_json     = ""
 			for file in sorted( os.listdir( dir ) ):
 				if "magnitude1" in file and ".json" in file:
 					magnitude1_time = json.load( open( dir + file ) )["AcquisitionTime"]
@@ -47,10 +51,10 @@ def main():
 				if "phase2" in file and ".json" in file:
 					phase2_time = json.load( open( dir + file ) )["AcquisitionTime"]
 					phase2_json = dir + file
-
 				# when we have the AcquisitionTime for all fmap-files in the folder, we can check if they are switched (relative to phase1/phase2)
 				if magnitude1_time != no_value and magnitude2_time != no_value and phase1_time != no_value and phase2_time != no_value:
 					# if the AcquisitionTime is switched and we didn't changed the filenames:
+					print (magnitude1_time)
 					if ( magnitude1_time > magnitude2_time and this_magnitude ):
 
 						# for swapping the names of jsons for magnitudes
