@@ -38,5 +38,10 @@ python code/build_dta/code/routines/order-magnitude-and-phase_fix_all.py /data/B
 chmod 775 code/build_dta/code/routines/order-magnitude-and-phase.sh
 datalad save -r -m "fixing fieldmaps."
 
+../BIDS_DATALAD/benjamin_dta/build_dta/code/create/check_dimensions.py
+python code/build_dta/code/create/check_dimensions.py | grep rm > code/build_dta/code/routines/remove_stopped_tasks.sh
+chmod 775 code/build_dta/code/routines/remove_stopped_tasks.sh
+datalad save -r -m "Removed the tasks, that where stopped while scanning."
+
 ./code/build_dta/code/procedures/fix-useless-run-values.sh
 
