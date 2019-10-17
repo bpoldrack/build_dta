@@ -54,7 +54,6 @@ def main():
 				# when we have the AcquisitionTime for all fmap-files in the folder, we can check if they are switched (relative to phase1/phase2)
 				if magnitude1_time != no_value and magnitude2_time != no_value and phase1_time != no_value and phase2_time != no_value:
 					# if the AcquisitionTime is switched and we didn't changed the filenames:
-					print (magnitude1_time)
 					if ( magnitude1_time > magnitude2_time and this_magnitude ):
 
 						# for swapping the names of jsons for magnitudes
