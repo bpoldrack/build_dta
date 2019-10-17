@@ -30,9 +30,6 @@ datalad save sourcedata -m "installed the sourcedata that has to be converted in
 
 datalad hirni-spec2bids */studyspec.json
 
-# for changing the term fieldmap to magnitude or phase in file-names
-code/build_dta/code/procedures/fieldmaps-to-phase-or-magnitude_fix_all.sh
-
 # for generating the ( TODO: git mv ) mv commands for ordering magnitude/phase 1/2
 python code/build_dta/code/routines/order-magnitude-and-phase_fix_all.py /data/BnB_USER/Kadelka/DTA_study/ > code/build_dta/code/routines/order-magnitude-and-phase.sh
 chmod 775 code/build_dta/code/routines/order-magnitude-and-phase.sh
