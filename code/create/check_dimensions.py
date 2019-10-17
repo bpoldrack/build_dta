@@ -18,12 +18,11 @@ def main():
 		for file in files:
 			if (file[-7:] == ".nii.gz" and "task" in file):
 				img = nibabel.load( file )
+				print( "\n\n" + str(img.shape) )
 				if "exp1" in file and img.shape[-1] < 600:
-					print( str(img.shape) + "\t\t" + file )
-					print( "rm " + file)
+					print( "rm " + file )
 				elif "rest" in file and img.shape[-1] < 200:
-					print( str(img.shape) + "\t\t" + file )
-					print( "rm " + file)
+					print( "rm " + file )
 
 
 
