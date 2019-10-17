@@ -37,3 +37,6 @@ code/build_dta/code/procedures/fieldmaps-to-phase-or-magnitude_fix_all.sh
 python code/build_dta/code/routines/order-magnitude-and-phase_fix_all.py /data/BnB_USER/Kadelka/DTA_study/ > code/build_dta/code/routines/order-magnitude-and-phase.sh
 chmod 775 code/build_dta/code/routines/order-magnitude-and-phase.sh
 datalad save -r -m "fixing fieldmaps."
+
+./code/build_dta/code/procedures/fix-useless-run-values.sh
+
