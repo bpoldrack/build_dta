@@ -45,4 +45,59 @@ chmod 775 code/build_dta/code/routines/remove_stopped_tasks.sh
 datalad save -r -m "Removed the tasks, that where stopped while scanning."
 
 ./code/build_dta/code/procedures/fix-useless-run-values.sh
+datalad save -r - "changed the filenames with wrong \"run\" in them"
 
+# changes, that I talked about with Lya/Robert and that I have to do by hand:
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_magnitude1.json 		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_magnitude1.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_magnitude1.nii.gz		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_magnitude1.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_magnitude2.json		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_magnitude2.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_magnitude2.nii.gz		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_magnitude2.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_phase1.json			./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_phase1.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_phase1.nii.gz			./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_phase1.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_phase2.json			./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_phase2.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_phase2.nii.gz			./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-rs_phase2.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-3_phase1.json		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_phase1.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-3_phase1.nii.gz		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_phase1.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-3_phase2.json		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_phase2.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-3_phase2.nii.gz		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_phase2.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-4_magnitude1.json		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_magnitude1.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-4_magnitude1.nii.gz	./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_magnitude1.nii.gz
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-4_magnitude2.json		./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_magnitude2.json
+git mv ./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-4_magnitude2.nii.gz	./sub-DTA026/ses-T10783/fmap/sub-DTA026_ses-T10783_run-tb_magnitude2.nii.gz
+
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_magnitude1.json 		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_magnitude1.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_magnitude1.nii.gz 		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_magnitude1.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_magnitude2.json 		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_magnitude2.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_magnitude2.nii.gz		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_magnitude2.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_phase1.json			./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_phase1.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_phase1.nii.gz			./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_phase1.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_phase2.json			./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_phase2.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_phase2.nii.gz			./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-rs_phase2.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-4_magnitude1.json		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_magnitude1.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-4_magnitude1.nii.gz	./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_magnitude1.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-4_magnitude2.json		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_magnitude2.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-4_magnitude2.nii.gz	./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_magnitude2.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-3_phase1.json		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_phase1.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-3_phase1.nii.gz		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_phase1.nii.gz
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-3_phase2.json		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_phase2.json
+git mv ./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-3_phase2.nii.gz		./sub-DTA143/ses-T11936/fmap/sub-DTA143_ses-T11936_run-tb_phase2.nii.gz
+
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_magnitude1.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_magnitude1.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_magnitude1.nii.gz		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_magnitude1.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_magnitude2.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_magnitude2.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_magnitude2.nii.gz		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_magnitude2.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-3_phase1.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_phase1.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-3_phase1.nii.gz		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_phase1.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-3_phase2.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_phase2.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-3_phase2.nii.gz		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-rs_phase2.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-2_magnitude1.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_magnitude1.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-2_magnitude1.nii.gz	./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_magnitude1.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-2_magnitude2.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_magnitude2.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-2_magnitude2.nii.gz	./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_magnitude2.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-4_phase1.json		./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_phase1.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-4_phase1.nii.gz	./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_phase1.nii.gz
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-4_phase2.json	./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_phase2.json
+git mv ./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-4_phase2.nii.gz	./sub-DTA148/ses-T11670/fmap/sub-DTA148_ses-T11670_run-tb_phase2.nii.gz
+
+
+datalad save -r -m "Changed fieldmap-names for the exception cases."
