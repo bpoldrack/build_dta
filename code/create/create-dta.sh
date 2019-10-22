@@ -44,6 +44,9 @@ chmod 775 code/build_dta/code/routines/remove_stopped_tasks.sh
 ./code/build_dta/code/routines/remove_stopped_tasks.sh
 datalad save -r -m "Removed the tasks, that where stopped while scanning."
 
+./code/build_dta/code/routines/change-dwi-run-to-acq_fix_all.sh
+datalad save -r -m "Changed the \"run\" in dwi to \"acq\""
+
 ./code/build_dta/code/procedures/fix-useless-run-values.sh
 datalad save -r - "changed the filenames with wrong \"run\" in them"
 

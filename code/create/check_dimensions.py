@@ -23,6 +23,10 @@ def main():
 					print( "rm " + file )
 					print( "rm " + file.replace(".nii.gz", ".json") )
 					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
+				if "exp2" in file and img.shape[-1] < 450:
+					print( "rm " + file )
+					print( "rm " + file.replace(".nii.gz", ".json") )
+					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
 				elif "rest" in file and img.shape[-1] < 200:
 					print( "rm " + file )
 					print( "rm " + file.replace(".nii.gz", ".json") )
