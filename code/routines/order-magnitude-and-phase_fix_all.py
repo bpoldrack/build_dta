@@ -31,6 +31,7 @@ def main():
 	# check the fmap-folders, read AcquisitionTime from json-files
 	# and swap the order of phase1/phase2 + magnitude1/magnitude2
 	# if that is necessary
+	sort_by = "EchoTime"
 	for dir in sorted( list_of_fmaps ) :
 			magnitude1_time = no_value; magnitude2_time = no_value; phase1_time = no_value; phase2_time = no_value ;
 			this_phase = True ; this_magnitude = True
@@ -40,21 +41,21 @@ def main():
 			phase2_json     = ""
 			for file in sorted( os.listdir( dir ) ):
 				if "magnitude1" in file and ".json" in file:
-					magnitude1_time = json.load( open( dir + file ) )["AcquisitionTime"]
+					magnitude1_time = json.load( open( dir + file ) )[sort_by]
 					magnitude1_json = dir + file
 				if "magnitude2" in file and ".json" in file:
-					magnitude2_time = json.load( open( dir + file ) )["AcquisitionTime"]
+					magnitude2_time = json.load( open( dir + file ) )[sort_by]
 					magnitude2_json = dir + file
 				if "phase1" in file and ".json" in file:
-					phase1_time = json.load( open( dir + file ) )["AcquisitionTime"]
+					phase1_time = json.load( open( dir + file ) )[sort_by]
 					phase1_json = dir + file
 				if "phase2" in file and ".json" in file:
-					phase2_time = json.load( open( dir + file ) )["AcquisitionTime"]
+					phase2_time = json.load( open( dir + file )) [sort_by]
 					phase2_json = dir + file
 				# when we have the AcquisitionTime for all fmap-files in the folder, we can check if they are switched (relative to phase1/phase2)
 				if magnitude1_time != no_value and magnitude2_time != no_value and phase1_time != no_value and phase2_time != no_value:
 					# if the AcquisitionTime is switched and we didn't changed the filenames:
-					if ( magnitude1_time > magnitude2_time and this_magnitude ):
+					if ( magnitude1_time == 0.00488 ):
 
 						# for swapping the names of jsons for magnitudes
 						print("mv " + magnitude1_json + " " + dir + temp)
@@ -69,7 +70,7 @@ def main():
 						# otherwise it switches the names an even number of times (...)
 						this_magnitude = False
 
-					if ( phase1_time > phase2_time and this_phase ):
+					if ( phase1_time == 0.00488 and this_phase ):
 
 						# for swapping the names of jsons for phases
 						print("mv " + phase1_json + " " + dir + temp)
