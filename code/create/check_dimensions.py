@@ -16,21 +16,21 @@ def main():
 		files[:] = [ os.path.join(root, file) for file in files[:] ]
 		files.sort()
 		for file in files:
-			if (file[-7:] == ".nii.gz" and "task" in file):
+			if (file[-7:] == ".nii.gz"):
 				img = nibabel.load( file )
-				print( "\n\n" + str(img.shape) )
-				if "exp1" in file and img.shape[-1] < 600:
-					print( "rm " + file )
-					print( "rm " + file.replace(".nii.gz", ".json") )
-					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
-				if "exp2" in file and img.shape[-1] < 450:
-					print( "rm " + file )
-					print( "rm " + file.replace(".nii.gz", ".json") )
-					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
-				elif "rest" in file and img.shape[-1] < 200:
-					print( "rm " + file )
-					print( "rm " + file.replace(".nii.gz", ".json") )
-					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
-
+				print( "\n\n" + file + "\n" +  str(img.shape) )
+#				if "exp1" in file and img.shape[-1] < 600:#
+#					print( "rm " + file )
+#					print( "rm " + file.replace(".nii.gz", ".json") )
+#					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
+#				if "exp2" in file and img.shape[-1] < 450:
+#					print( "rm " + file )
+#					print( "rm " + file.replace(".nii.gz", ".json") )
+#					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
+#				elif "rest" in file and img.shape[-1] < 200:
+#					print( "rm " + file )
+#					print( "rm " + file.replace(".nii.gz", ".json") )
+#					print( "rm " + file.replace("_bold.nii.gz", "_events.tsv") )
+#
 
 main()

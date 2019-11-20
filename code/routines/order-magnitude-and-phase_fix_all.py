@@ -21,6 +21,8 @@ def main():
 	# we collect the fmap-folder in a list. TODO: This is shitty and could be faster.
 	list_of_fmaps = []
 	for root, dirs, files in os.walk( inputPath ):
+		if "sourcedata" in dirs:
+			continue
 		dirs[:] = [ os.path.join(root, dir)  for dir in dirs[:] ]
 		for dir in dirs:
 			if not "fmap" in dir or not "sub-" in dir:
@@ -55,8 +57,9 @@ def main():
 				# when we have the AcquisitionTime for all fmap-files in the folder, we can check if they are switched (relative to phase1/phase2)
 				if magnitude1_time != no_value and magnitude2_time != no_value and phase1_time != no_value and phase2_time != no_value:
 					# if the AcquisitionTime is switched and we didn't changed the filenames:
-					if ( magnitude1_time == 0.00488 ):
+					if ( magnitude1_time == 0.00488 and magnitude2_time == 0.0023 and this_magnitude):
 
+						print ( str(magnitude1_time) + " " + str(magnitude2_time) )
 						# for swapping the names of jsons for magnitudes
 						print("mv " + magnitude1_json + " " + dir + temp)
 						print("mv " + magnitude2_json + " " + magnitude1_json)
